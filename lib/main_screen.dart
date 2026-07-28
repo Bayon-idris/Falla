@@ -20,6 +20,8 @@ import 'package:falla/main.dart';
 import 'package:falla/token_store.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import 'constant.dart';
+
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
 
@@ -56,7 +58,7 @@ class _MainScreenState extends State<MainScreen> {
     await _initialized.future;
     _appLinks = AppLinks();
     _appLinksSubscription = _appLinks.uriLinkStream.listen((uri) {
-      if (uri.scheme == 'org.traccar.manager') {
+      if (uri.scheme == baseUrl) {
         final baseUri = Uri.parse(_getUrl());
         final appPathSegments = [uri.host, ...uri.pathSegments];
         final updatedQueryParameters = Map<String, String>.from(
@@ -89,7 +91,7 @@ class _MainScreenState extends State<MainScreen> {
       final originalRedirect = Uri.parse(uri.queryParameters['redirect_uri']!);
       final redirectSegments = originalRedirect.pathSegments;
       final updatedRedirect = Uri(
-        scheme: 'org.traccar.manager',
+        scheme: baseUrl,
         host: redirectSegments.first,
         path: '/${redirectSegments.skip(1).join('/')}',
         queryParameters: originalRedirect.queryParameters.isEmpty
@@ -115,7 +117,7 @@ class _MainScreenState extends State<MainScreen> {
   }
 
   String _getUrl() {
-    final url = _preferences.getString(_urlKey) ?? 'https://demo.traccar.org';
+    final url = _preferences.getString(_urlKey) ?? baseUrl;
     return url.endsWith('/') ? url.substring(0, url.length - 1) : url;
   }
 

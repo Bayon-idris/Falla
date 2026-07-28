@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "236727967015",
+    "project_id": "falla-b9d67",
+    "storage_bucket": "falla-b9d67.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:236727967015:android:be2bf52b934cd3d100dd02",
+        "android_client_info": {
+          "package_name": "com.app.cheaping.falla"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFMaNWvFdnAPbfpt6wiSzBQr6zN54RqMc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
